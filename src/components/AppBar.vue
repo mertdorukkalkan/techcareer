@@ -15,15 +15,14 @@
     <template v-slot:prepend>
       <v-btn text>Home</v-btn>
       <v-btn text>About</v-btn>
-      <v-btn text>Services</v-btn>
       <v-btn text>Contact</v-btn>
-     
+
     </template>
     <v-spacer></v-spacer>
     <v-text-field density="compact" label="Search" append-inner-icon="mdi-magnify" single-line hide-details flat></v-text-field>
     <template v-slot:append>
-      <v-btn icon>
-        <v-icon>mdi-basket</v-icon>
+      <v-btn icon @click="$router.push('/basket')">
+      <v-icon>mdi-basket</v-icon>
       </v-btn>
       <v-btn icon>
         <v-icon>mdi-account</v-icon>
