@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-app>
     <app-bar>
@@ -18,7 +19,7 @@
             </v-card>
           </v-col>
           <v-col cols="12" sm="10">
-            <v-breadcrumbs :items="['Time','Size']">
+            <v-breadcrumbs :items="['Category','Tree']">
               <template v-slot:divider>
                 <v-icon icon="mdi-chevron-right"></v-icon>
               </template>
@@ -49,7 +50,6 @@ export default {
     };
   },
   mounted() {
-    // Fetch all categories when the component is mounted
     this.fetchAllCategories();
   },
   methods: {
@@ -64,15 +64,15 @@ export default {
     },
     fetchProductsByCategory() {
       if (this.selectedCategory) {
-        ProductsService.getByCategoryProducts(this.selectedCategory)
+        ProductsService.getByCategoryProducts()
           .then((data) => {
             this.filteredProducts = data;
+            console.log("Filtered products:", this.filteredProducts);
           })
           .catch((error) => {
             console.error("Error fetching products by category:", error);
           });
       } else {
-        // If no category selected, show all products
         this.filteredProducts = this.products;
       }
     }
